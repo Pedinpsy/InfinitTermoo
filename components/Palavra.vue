@@ -6,35 +6,36 @@
     <v-container
   
     style="max-width:600px"
-      class="grey align-content-center"
-       align="center"
-       align-content=" center"
+      class="grey "
     >
      <v-row
      
-        class="align-content-center"
+       
         no-gutters        
          v-for="(rowTry,indiceTry) in trys"
          :key="indiceTry"  
       >
-        <v-col class="align-content-center"
+        <v-col 
           v-for="(n,indicecoll) in rowTry"
           :key="indicecoll"
         >
           <v-card
+            
             align="center"
             class="pa-2"
             outlined
             tile
           >   
-          <v-sheet class="align-content-center"
+          <v-sheet 
                 :color="getColor(indiceTry,indicecoll)"
-                elevation="24"
-                height="80"
-                width="80"
-                align-self="center"
+                
+                height="70"
+                width="70"
+             
             >
-                {{n}}
+            <div v-if="n !== ''">
+                <font-awesome-icon size="4x" :icon="['fa', n]" />
+            </div>
                 </v-sheet>
 
            
@@ -49,7 +50,10 @@
 </template>
 
 <script>
+
 import dataPalavra from "../static/data.json"
+
+
 export default {
   name: 'Palavra',
     mounted(){  

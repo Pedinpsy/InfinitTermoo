@@ -1,7 +1,8 @@
 <!-- Please remove this file from your project -->
 <template>
 <div>
-    
+  <p> Pontos : {{pontos}}</p>
+   <p>Partidas jogadas : {{numeroPartidas}}</p>
     <v-container
   
     style="max-width:600px"
@@ -63,6 +64,17 @@ export default {
 
     },
     methods: {
+        getAllIndexes(arr, val) {
+            var indexes = [], i = -1;
+            while ((i = arr.indexOf(val, i+1)) != -1){
+                indexes.push(i);
+            }
+            return indexes;
+        },
+
+
+
+
         getColor(it,ic)
         {
             if(it+1  > this.numeroTentativa)
@@ -71,8 +83,25 @@ export default {
                 return "green darken-2"
             if(!this.selectedWord.includes(this.trys[it][ic]))
                 return "red darken-2"
-            if(this.selectedWord.includes(this.trys[it][ic]))
-                return "yellow darken-2"
+            if(this.selectedWord.includes(this.trys[it][ic])){
+                var ocorrencias = this.getAllIndexes(this.selectedWord,this.trys[it][ic])       
+                var flag = true; 
+                
+                console.log(ocorrencias)
+                    for (var i = 0 ; i < ocorrencias.length ; i ++){
+                        if(this.selectedWord[ocorrencias[i]] !== this.trys[it][ocorrencias[i]]){
+                            flag = false
+                        }
+                    
+                }
+                if(!flag){
+                    return "yellow  darken-2"
+                }
+                 return " red darken-2"
+            
+                
+            }
+               return "grey darken-2"
             
           
            
@@ -97,6 +126,34 @@ export default {
             else
                 return false;
             },
+        checkWin(){
+                
+            if(this.selectedWord === this.trys[this.numeroTentativa-1].join(""))
+            {
+                return true;
+            }else if(this.numeroTentativa >4){
+                alert("Voce perdeu burro: a palavra correta era:"+ this.selectedWord)
+                this.resetBoard(false)
+                
+            }
+            return false
+        },
+        resetBoard(win){
+            this.numeroPartidas ++;
+            if(win)
+                this.pontos++;
+           
+            this.selectedWord = this.todasPalavras[Math.floor(Math.random()*this.todasPalavras.length)]
+            this.trys = [
+                    ['', '', '', '', ''], 
+                   ['', '', '', '', ''], 
+                    ['', '', '', '', ''], 
+                    ['', '', '', '', ''],
+                    ['', '', '', '', '']]
+            this.numeroTentativa = 0;
+            this.letraLocal = 0;
+
+        },      
 
 
         keyPressed(event){
@@ -107,8 +164,14 @@ export default {
                     alert("Palavra não existe")
                 }else if (this.letraLocal == 5 && this.checkExistOnDictionary()){
                     
+                    
                     this.numeroTentativa++
                     this.letraLocal = 0
+                    if(this.checkWin()){
+                        alert("você ganhou")
+                        this.resetBoard(true)
+                       
+                    }
                 }
                     
                 
@@ -136,7 +199,7 @@ export default {
        return{
            numeroTentativa:0,
            pontos:0,
-            tentativa:0,
+            numeroPartidas:1,
             letraLocal:0,
             selectedWord:'',
            trys:[

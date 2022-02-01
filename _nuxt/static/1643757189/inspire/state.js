@@ -1,0 +1,1 @@
+window.__NUXT__=(function(a){return {staticAssetsBase:"\u002FInfinitTermoo\u002F_nuxt\u002Fstatic\u002F1643757189",layout:"default",error:a,serverRendered:true,routePath:"\u002Finspire",config:{_app:{basePath:"\u002FInfinitTermoo\u002F",assetsPath:"\u002FInfinitTermoo\u002F_nuxt\u002F",cdnURL:a}}}}(null));

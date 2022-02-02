@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[7],{402:function(n,e,t){"use strict";t.r(e);var l={name:"IndexPage"},r=t(88),component=Object(r.a)(l,(function(){var n=this.$createElement;return(this._self._c||n)("Palavra")}),[],!1,null,null,null);e.default=component.exports;installComponents(component,{Palavra:t(397).default})}}]);

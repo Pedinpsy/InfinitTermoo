@@ -1,16 +1,14 @@
 <!-- Please remove this file from your project -->
 <template>
 <div>
-  <p> Pontos : {{pontos}}</p>
-   <p>Partidas jogadas : {{numeroPartidas}}</p>
+    <v-row style = "margin-bottom:20px">
+    <v-col><p> Pontos : {{pontos}}</p>
+   <p>Partidas jogadas : {{numeroPartidas}}</p></v-col>
     <v-container
-  
     style="max-width:600px"
       class="grey "
     >
      <v-row
-     
-       
         no-gutters        
          v-for="(rowTry,indiceTry) in trys"
          :key="indiceTry"  
@@ -19,8 +17,7 @@
           v-for="(n,indicecoll) in rowTry"
           :key="indicecoll"
         >
-          <v-card
-            
+          <v-card            
             align="center"
             class="pa-2"
             outlined
@@ -44,6 +41,114 @@
       </v-row>
     
     </v-container>
+    <v-col></v-col>
+     </v-row>
+  
+    <v-container
+  
+    style="max-width:70%"
+      class="grey "
+    >
+     <v-row
+        no-gutters        
+       
+      >
+        <v-col 
+          v-for="(n,indicecoll) in keyBoard1"
+          :key="indicecoll"
+        >
+          <v-card
+            align="center"
+            class="pa-2"
+            outlined
+            tile
+          >   
+          <v-sheet   
+          :color="getColorKeyboard(n)"                                     
+                height="70"
+                width="70"             
+            >
+            <div v-if="n !== ''">
+                <font-awesome-icon size="4x" :icon="['fa', n.toLowerCase()]" />
+            </div>
+                </v-sheet>
+
+           
+          </v-card>
+        </v-col>    
+      </v-row>
+    </v-container>
+     <v-container
+  
+    style="max-width:60%"
+      class="grey "
+    >
+           <v-row
+        no-gutters        
+       
+      >
+        <v-col 
+          v-for="(n,indicecoll) in keyBoard2"
+          :key="indicecoll"
+        >
+          <v-card
+            align="center"
+            class="pa-2"
+            outlined
+            tile
+          >   
+          <v-sheet 
+                :color="getColorKeyboard(n)"                    
+                height="70"
+                width="70"             
+            >
+            <div v-if="n !== ''">
+                <font-awesome-icon size="4x" :icon="['fa', n.toLowerCase()]" />
+            </div>
+                </v-sheet>
+
+           
+          </v-card>
+        </v-col>    
+      </v-row>
+     </v-container>
+      <v-container
+  
+    style="max-width:40%"
+      class="grey "
+    >
+           <v-row
+        no-gutters        
+       
+      >
+        <v-col 
+          v-for="(n,indicecoll) in keyBoard3"
+          :key="indicecoll"
+        >
+          <v-card
+            align="center"
+            class="pa-2"
+            outlined
+            tile
+          >   
+          <v-sheet 
+                  :color="getColorKeyboard(n)"              
+                height="70"
+                width="70"             
+            >
+            <div v-if="n !== ''">
+                <font-awesome-icon size="4x" :icon="['fa', n.toLowerCase()]" />
+            </div>
+                </v-sheet>
+
+           
+          </v-card>
+        </v-col>    
+      </v-row>
+     
+    
+    </v-container>
+
 
 
 </div>
@@ -61,6 +166,7 @@ export default {
         this.selectedWord = this.todasPalavras[Math.floor(Math.random()*this.todasPalavras.length)]
         console.log(this.selectedWord)
       
+      
     },
 
     computed:{
@@ -76,22 +182,50 @@ export default {
             return indexes;
         },
 
-
-
+        getColorKeyboard(letter){
+              if(this.colorKeyboard[letter.toLowerCase()] !== undefined){
+                  
+                    return this.colorKeyboard[letter.toLowerCase()].color 
+                }                
+                return "grey darken-2"
+        
+        },
 
         getColor(it,ic)
         {
-            if(it+1  > this.numeroTentativa)
+         
+            if(it+1 > this.numeroTentativa){
+                
                 return "grey darken-2"
+            }
+               
             if(this.selectedWord[ic] == this.trys[it][ic])
+            {              
+               
+                this.colorKeyboard[this.trys[it][ic]] = { color :"green darken-2"}           
                 return "green darken-2"
+            }
+              
             if(!this.selectedWord.includes(this.trys[it][ic]))
+             {
+             if( this.colorKeyboard[this.trys[it][ic]]!= undefined){
+                if(  
+                (this.colorKeyboard[this.trys[it][ic]].color !== "green darken-2") 
+                && this.colorKeyboard[this.trys[it][ic]].color !== "yellow darken-2" ){
+                    this.colorKeyboard[this.trys[it][ic]] ={ color :"red darken-2"}
+                 }                
+             }else
+             this.colorKeyboard[this.trys[it][ic]] ={ color :"red darken-2"}
+             
+                               
                 return "red darken-2"
+            }
+              
+               
             if(this.selectedWord.includes(this.trys[it][ic])){
                 var ocorrencias = this.getAllIndexes(this.selectedWord,this.trys[it][ic])       
                 var flag = true; 
-                
-                console.log(ocorrencias)
+               
                     for (var i = 0 ; i < ocorrencias.length ; i ++){
                         if(this.selectedWord[ocorrencias[i]] !== this.trys[it][ocorrencias[i]]){
                             flag = false
@@ -99,6 +233,12 @@ export default {
                     
                 }
                 if(!flag){
+                    if( this.colorKeyboard[this.trys[it][ic]]!= undefined  ){
+                        if(this.colorKeyboard[this.trys[it][ic]].color !== "green darken-2")
+                              this.colorKeyboard[this.trys[it][ic]] ={ color :"yellow darken-2"}
+                    }else
+                         this.colorKeyboard[this.trys[it][ic]] ={ color :"yellow darken-2"}
+                   
                     return "yellow  darken-2"
                 }
                  return " red darken-2"
@@ -114,7 +254,7 @@ export default {
             var palavra = this.trys[this.numeroTentativa][0]+this.trys[this.numeroTentativa][1]
             +this.trys[this.numeroTentativa][2]+this.trys[this.numeroTentativa][3]
             +this.trys[this.numeroTentativa][4]
-            console.log(palavra)
+           
             if(this.todasPalavras.includes(palavra)){               
                 return (true)
                 
@@ -143,17 +283,21 @@ export default {
             return false
         },
         resetBoard(win){
+            this.colorKeyboard =   {}
             this.numeroPartidas ++;
+
             if(win)
                 this.pontos++;
            
             this.selectedWord = this.todasPalavras[Math.floor(Math.random()*this.todasPalavras.length)]
+            console.log(this.selectedWord)
             this.trys = [
                     ['', '', '', '', ''], 
                    ['', '', '', '', ''], 
                     ['', '', '', '', ''], 
                     ['', '', '', '', ''],
                     ['', '', '', '', '']]
+            
             this.numeroTentativa = 0;
             this.letraLocal = 0;
 
@@ -161,9 +305,9 @@ export default {
 
 
         keyPressed(event){
-            console.log(this.trys)
+       
             if(event.key == "Enter" ){
-                console.log("enter")
+                
                 if(this.letraLocal == 5 && !this.checkExistOnDictionary()){
                     alert("Palavra não existe")
                 }else if (this.letraLocal == 5 && this.checkExistOnDictionary()){
@@ -185,13 +329,13 @@ export default {
                 this.trys[this.numeroTentativa][this.letraLocal-1] = ""
                 this.letraLocal--;                
                 this.$forceUpdate();
-                console.log(this.trys)                
+                             
             }
             else if(this.letraLocal <= 4 && this.lettersOnly(event.keyCode) ){
-                console.log("insert")
+            
                 this.trys[this.numeroTentativa][this.letraLocal] = event.key
                 this.letraLocal++;
-                console.log(this.trys)
+              
                 this.$forceUpdate();
             }
             this.$forceUpdate();
@@ -201,6 +345,10 @@ export default {
     },
    data() {
        return{
+           colorKeyboard:{},
+           keyBoard1 :["Q","W","E","R","T","Y","U","I","O","P"],
+           keyBoard2 : ["A","S","D","F","G","H","J","K","L"],
+            keyBoard3 :["Z","X","C","V","B","N","M"],
            numeroTentativa:0,
            pontos:0,
             numeroPartidas:1,

@@ -1,8 +1,17 @@
 import colors from 'vuetify/es5/util/colors'
-
+const routerBase = {  router: {
+  base: '/InfinitTermoo/'
+}}
+const router= {
+  base: '/InfinitTermoo/'
+}
 export default {
-  // Global page headers: https://go.nuxtjs.dev/config-head
+  router: { base: '/InfinitTermoo/' },
+  target: 'static',
+
   head: {
+    router: { base: '/InfinitTermoo/' },
+    target: 'static', 
     titleTemplate: '%s - InfinitTermoo',
     title: 'InfinitTermoo',
     htmlAttrs: {
@@ -67,5 +76,6 @@ export default {
      solid:true,
      brands:true
     }
-   }
+   },
+  ...routerBase
 }

@@ -1,13 +1,8 @@
 import colors from 'vuetify/es5/util/colors'
-const routerBase = {  router: {
-  base: '/InfinitTermoo/'
-}}
-const router= {
-  base: '/InfinitTermoo/'
+
 }
 export default {
-  router: { base: '/InfinitTermoo/' },
-  target: 'static',
+
 
   head: {
     router: { base: '/InfinitTermoo/' },

@@ -1,0 +1,66 @@
+html{
+    overflow-y: hidden !important;
+}
+
+.blocks{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3vh;
+}
+
+.line{
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+}
+
+.letter{
+    display: flex;
+    border: gray solid 5px;
+    border-radius: 3px;
+    margin: 2px;
+    width: 5vw;
+    height: 5vw;
+    min-width: 50px;
+    min-height: 50px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(1.5rem, 2vw, 2rem);
+}
+
+.big{
+    width: 10vw;
+    min-width: 100px;
+}
+
+.blocks > .line > .wrong{
+    border-color: rgb(126, 39, 39);
+    background-color: rgb(177, 42, 42);
+}
+
+.blocks > .line > .maybe{
+    border-color: rgb(126, 103, 39);
+    background-color: rgb(177, 163, 42);
+}
+
+.blocks > .line > .correct{
+    border-color: rgb(74, 126, 39);
+    background-color: rgb(125, 177, 42);
+}
+
+.blocks > .line > .selected{
+    border-bottom: gray solid 10px;
+}
+
+.keyboard > .line > .letter{
+    min-width: 30px;
+    min-height: 30px;
+    font-size: clamp(1rem, 2vw, 2rem);
+    cursor: pointer;
+}
+
+
+
+

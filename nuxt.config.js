@@ -72,5 +72,5 @@ export default {
      brands:true
     }
    },
-  ...routerBase
+
 }

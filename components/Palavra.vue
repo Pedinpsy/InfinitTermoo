@@ -156,14 +156,16 @@
 
 <script>
 
-import dataPalavra from "../static/data.json"
+
+import {Word} from "@andsfonseca/palavras-pt-br"
 
 
 export default {
   name: 'Palavra',
     mounted(){  
+      
         window.addEventListener('keydown', this.keyPressed); 
-        this.selectedWord = this.todasPalavras[Math.floor(Math.random()*this.todasPalavras.length)]
+        this.selectedWord = Word.getRandomWord(5,true,false,false,false)
         console.log(this.selectedWord)
       
       
@@ -250,12 +252,11 @@ export default {
           
            
         },
-        checkExistOnDictionary(){
-            var palavra = this.trys[this.numeroTentativa][0]+this.trys[this.numeroTentativa][1]
-            +this.trys[this.numeroTentativa][2]+this.trys[this.numeroTentativa][3]
-            +this.trys[this.numeroTentativa][4]
+        checkExistOnDictionary(){  
+
+            var palavra = this.trys[this.numeroTentativa].join("")
            
-            if(this.todasPalavras.includes(palavra)){               
+            if(Word.checkValid(palavra,5,true)){               
                 return (true)
                 
             }   else false
@@ -271,7 +272,7 @@ export default {
                 return false;
             },
         checkWin(){
-                
+              console.log(Word.wordleValidator(this.selectedWord,this.trys[this.numeroTentativa-1].join("")))
             if(this.selectedWord === this.trys[this.numeroTentativa-1].join(""))
             {
                 return true;
@@ -289,7 +290,7 @@ export default {
             if(win)
                 this.pontos++;
            
-            this.selectedWord = this.todasPalavras[Math.floor(Math.random()*this.todasPalavras.length)]
+            this.selectedWord = Word.getRandomWord(5,true,false,false,false)
             console.log(this.selectedWord)
             this.trys = [
                     ['', '', '', '', ''], 
@@ -363,7 +364,7 @@ export default {
            alignments: [
         'start'
       ],
-           todasPalavras : dataPalavra.palavras.map(e => e.normalize("NFD").replace(/[\u0300-\u036f]/g,""))
+          
        }
    }
 }

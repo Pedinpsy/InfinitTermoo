@@ -128,6 +128,7 @@ export default {
   mounted() {
     window.addEventListener("keydown", this.keyPressed);
     this.selectedWord = Word.getRandomWord(5, true, false, false, false);
+    console.log(Word.getAllWords(5, true, false, false, false))
   },
 
   computed: {},
@@ -264,8 +265,8 @@ export default {
 
       if (win) this.pontos++;
 
-      this.selectedWord = Word.getRandomWord(5, true, false, false, false);
-      console.log(this.selectedWord);
+      this.selectedWord = Word.getRandomWord(5, true, false, false, false);;
+     
       this.trys = [
         ["", "", "", "", ""],
         ["", "", "", "", ""],

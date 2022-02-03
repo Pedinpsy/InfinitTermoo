@@ -128,13 +128,13 @@ export default {
   mounted() {
     window.addEventListener("keydown", this.keyPressed);
     this.selectedWord = Word.getRandomWord(5, true, false, false, false);
-    console.log(Word.getAllWords(5, true, false, false, false))
+ 
   },
 
   computed: {},
   methods: {
     onClickKeyboard(key) {
-      console.log(key)
+      
       if (key == "Enter") {
         if (this.letraLocal == 5 && !this.checkExistOnDictionary()) {
           alert("Palavra não existe");
@@ -245,12 +245,7 @@ export default {
      return this.letters.indexOf(letter.toLowerCase()) > -1
     },
     checkWin() {
-      console.log(
-        Word.wordleValidator(
-          this.selectedWord,
-          this.trys[this.numeroTentativa - 1].join("")
-        )
-      );
+     
       if (this.selectedWord === this.trys[this.numeroTentativa - 1].join("")) {
         return true;
       } else if (this.numeroTentativa > 5) {

@@ -1,7 +1,7 @@
 
 <template>
   <div>
-    <div class="title">Título</div>
+    <div class="title">Infinitermoo</div>
     <div class="game">
       <div class="stats">
         <p>Pontos: {{ pontos }}</p>
@@ -13,7 +13,12 @@
             class="letter"
             v-for="(n, indicecoll) in rowTry"
             :key="indicecoll"
-            :class="[getColor(indiceTry, indicecoll), ( numeroTentativa == indiceTry && letraLocal == indicecoll ? 'selected' : '')]" 
+            :class="[
+              getColor(indiceTry, indicecoll),
+              numeroTentativa == indiceTry && letraLocal == indicecoll
+                ? 'selected'
+                : '',
+            ]"
           >
             <div>{{ n }}</div>
           </div>
@@ -22,92 +27,92 @@
     </div>
     <div class="keyboard">
       <div class="line">
-        <div class="letter" :class="getColorKeyboard('Q')">
+        <div class="letter" :class="getColorKeyboard('Q')" @click="onClickKeyboard('q')">
           <div>Q</div>
         </div>
-        <div class="letter" :class="getColorKeyboard('W')">
+        <div class="letter" :class="getColorKeyboard('W')" @click="onClickKeyboard('w')">
           <div>W</div>
         </div>
-        <div class="letter" :class="getColorKeyboard('E')">
+        <div class="letter" :class="getColorKeyboard('E')" @click="onClickKeyboard('e')">
           <div>E</div>
         </div>
-        <div class="letter" :class="getColorKeyboard('R')">
+        <div class="letter" :class="getColorKeyboard('R')" @click="onClickKeyboard('r')">
           <div>R</div>
         </div>
-        <div class="letter" :class="getColorKeyboard('T')">
+        <div class="letter" :class="getColorKeyboard('T')" @click="onClickKeyboard('t')">
           <div>T</div>
         </div>
-        <div class="letter" :class="getColorKeyboard('Y')">
+        <div class="letter" :class="getColorKeyboard('Y')" @click="onClickKeyboard('y')">
           <div>Y</div>
         </div>
-        <div class="letter" :class="getColorKeyboard('U')">
+        <div class="letter" :class="getColorKeyboard('U')" @click="onClickKeyboard('u')">
           <div>U</div>
         </div>
-        <div class="letter" :class="getColorKeyboard('I')">
+        <div class="letter" :class="getColorKeyboard('I')" @click="onClickKeyboard('i')">
           <div>I</div>
         </div>
-        <div class="letter" :class="getColorKeyboard('O')">
+        <div class="letter" :class="getColorKeyboard('O')" @click="onClickKeyboard('o')">
           <div>O</div>
         </div>
-        <div class="letter" :class="getColorKeyboard('P')">
+        <div class="letter" :class="getColorKeyboard('P')" @click="onClickKeyboard('p')">
           <div>P</div>
         </div>
       </div>
       <div class="line">
-        <div class="letter" :class="getColorKeyboard('A')">
+        <div class="letter" :class="getColorKeyboard('A')" @click="onClickKeyboard('a')">
           <div>A</div>
         </div>
-        <div class="letter" :class="getColorKeyboard('S')">
+        <div class="letter" :class="getColorKeyboard('S')" @click="onClickKeyboard('s')">
           <div>S</div>
         </div>
-        <div class="letter" :class="getColorKeyboard('D')">
+        <div class="letter" :class="getColorKeyboard('D')" @click="onClickKeyboard('d')">
           <div>D</div>
         </div>
-        <div class="letter" :class="getColorKeyboard('F')">
+        <div class="letter" :class="getColorKeyboard('F')" @click="onClickKeyboard('f')">
           <div>F</div>
         </div>
-        <div class="letter" :class="getColorKeyboard('G')">
+        <div class="letter" :class="getColorKeyboard('G')" @click="onClickKeyboard('g')">
           <div>G</div>
         </div>
-        <div class="letter" :class="getColorKeyboard('H')">
+        <div class="letter" :class="getColorKeyboard('H')" @click="onClickKeyboard('h')">
           <div>H</div>
         </div>
-        <div class="letter" :class="getColorKeyboard('J')">
+        <div class="letter" :class="getColorKeyboard('J')" @click="onClickKeyboard('j')">
           <div>J</div>
         </div>
-        <div class="letter" :class="getColorKeyboard('K')">
+        <div class="letter" :class="getColorKeyboard('K')" @click="onClickKeyboard('k')">
           <div>K</div>
         </div>
-        <div class="letter" :class="getColorKeyboard('L')">
+        <div class="letter" :class="getColorKeyboard('L')" @click="onClickKeyboard('l')">
           <div>L</div>
         </div>
-        <div class="letter">
+        <div class="letter" @click="onClickKeyboard('Backspace')">
           <div>⌫</div>
         </div>
       </div>
       <div class="line">
-        <div class="letter" :class="getColorKeyboard('Z')">
+        <div class="letter" :class="getColorKeyboard('Z')" @click="onClickKeyboard('z')">
           <div>Z</div>
         </div>
-        <div class="letter" :class="getColorKeyboard('X')">
+        <div class="letter" :class="getColorKeyboard('X')" @click="onClickKeyboard('x')">
           <div>X</div>
         </div>
-        <div class="letter" :class="getColorKeyboard('C')">
+        <div class="letter" :class="getColorKeyboard('C')" @click="onClickKeyboard('c')">
           <div>C</div>
         </div>
-        <div class="letter" :class="getColorKeyboard('V')">
+        <div class="letter" :class="getColorKeyboard('V')" @click="onClickKeyboard('v')">
           <div>V</div>
         </div>
-        <div class="letter" :class="getColorKeyboard('B')">
+        <div class="letter" :class="getColorKeyboard('B')" @click="onClickKeyboard('b')">
           <div>B</div>
         </div>
-        <div class="letter" :class="getColorKeyboard('N')">
+        <div class="letter" :class="getColorKeyboard('N')" @click="onClickKeyboard('n')">
           <div>N</div>
         </div>
-        <div class="letter" :class="getColorKeyboard('M')">
+        <div class="letter" :class="getColorKeyboard('M')" @click="onClickKeyboard('m')">
           <div>M</div>
         </div>
-        <div class="letter big">
+        <div class="letter big" @click="onClickKeyboard('Enter')">
           <div>↵</div>
         </div>
       </div>
@@ -127,6 +132,34 @@ export default {
 
   computed: {},
   methods: {
+    onClickKeyboard(key) {
+      console.log(key)
+      if (key == "Enter") {
+        if (this.letraLocal == 5 && !this.checkExistOnDictionary()) {
+          alert("Palavra não existe");
+        } else if (this.letraLocal == 5 && this.checkExistOnDictionary()) {
+          this.numeroTentativa++;
+          this.letraLocal = 0;
+          if (this.checkWin()) {
+            alert("você ganhou");
+            this.resetBoard(true);
+          }
+        }
+        return;
+      }
+
+      if (key == "Backspace" && this.letraLocal != 0) {
+        this.trys[this.numeroTentativa][this.letraLocal - 1] = "";
+        this.letraLocal--;
+        this.$forceUpdate();
+      } else if (this.letraLocal <= 4 && this.lettersOnly(key)) {
+        this.trys[this.numeroTentativa][this.letraLocal] = key.toLowerCase();
+        this.letraLocal++;
+
+        this.$forceUpdate();
+      }
+      this.$forceUpdate();
+    },
     getAllIndexes(arr, val) {
       var indexes = [],
         i = -1;
@@ -207,11 +240,8 @@ export default {
         return true;
       } else false;
     },
-    lettersOnly(number) {
-      var charCode = number;
-
-      if (charCode > 64 && charCode < 91) return true;
-      else return false;
+    lettersOnly(letter) {
+     return this.letters.indexOf(letter.toLowerCase()) > -1
     },
     checkWin() {
       console.log(
@@ -249,31 +279,12 @@ export default {
     },
 
     keyPressed(event) {
-      if (event.key == "Enter") {
-        if (this.letraLocal == 5 && !this.checkExistOnDictionary()) {
-          alert("Palavra não existe");
-        } else if (this.letraLocal == 5 && this.checkExistOnDictionary()) {
-          this.numeroTentativa++;
-          this.letraLocal = 0;
-          if (this.checkWin()) {
-            alert("você ganhou");
-            this.resetBoard(true);
-          }
-        }
+      var key = event.key
 
-        return;
-      }
-      if (event.code == "Backspace" && this.letraLocal != 0) {
-        this.trys[this.numeroTentativa][this.letraLocal - 1] = "";
-        this.letraLocal--;
-        this.$forceUpdate();
-      } else if (this.letraLocal <= 4 && this.lettersOnly(event.keyCode)) {
-        this.trys[this.numeroTentativa][this.letraLocal] = event.key;
-        this.letraLocal++;
+      if(event.code == "Backspace")
+        key = "Backspace"
 
-        this.$forceUpdate();
-      }
-      this.$forceUpdate();
+      this.onClickKeyboard(key);
     },
   },
   data() {
@@ -287,6 +298,7 @@ export default {
       numeroPartidas: 1,
       letraLocal: 0,
       selectedWord: "",
+      letters: ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"],
       trys: [
         ["", "", "", "", ""],
         ["", "", "", "", ""],

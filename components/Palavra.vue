@@ -5,7 +5,7 @@
     <v-col><p> Pontos : {{pontos}}</p>
    <p>Partidas jogadas : {{numeroPartidas}}</p></v-col>
     <v-container
-    style="max-width:600px"
+    style="max-width:50%"
       class="grey "
     >
      <v-row
@@ -276,7 +276,7 @@ export default {
             if(this.selectedWord === this.trys[this.numeroTentativa-1].join(""))
             {
                 return true;
-            }else if(this.numeroTentativa >4){
+            }else if(this.numeroTentativa >this.qtdTentativa){
                 alert("Voce perdeu burro: a palavra correta era:"+ this.selectedWord)
                 this.resetBoard(false)
                 
@@ -294,8 +294,9 @@ export default {
             console.log(this.selectedWord)
             this.trys = [
                     ['', '', '', '', ''], 
-                   ['', '', '', '', ''], 
                     ['', '', '', '', ''], 
+                    ['', '', '', '', ''], 
+                    ['', '', '', '', ''],
                     ['', '', '', '', ''],
                     ['', '', '', '', '']]
             
@@ -355,12 +356,14 @@ export default {
             numeroPartidas:1,
             letraLocal:0,
             selectedWord:'',
+            qtdTentativa: 5,
            trys:[
                	['', '', '', '', ''], 
 	            ['', '', '', '', ''], 
 	            ['', '', '', '', ''], 
 	            ['', '', '', '', ''],
-                ['', '', '', '', '']],
+                ['', '', '', '', ''],
+                 ['', '', '', '', ''],],
            alignments: [
         'start'
       ],

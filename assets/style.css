@@ -1,20 +1,24 @@
 html{
     overflow-y: hidden !important;
+    touch-action: none;
 }
 
 .blocks{
     display: flex;
     flex-direction: column;
     margin-bottom: 3vh;
+    touch-action: none;
 }
 
 .line{
     display: flex; 
     align-items: center;
     justify-content: center;
+    touch-action: none;
 }
 
 .letter{
+    touch-action: none;
     display: flex;
     border: gray solid 5px;
     border-radius: 3px;
@@ -33,6 +37,7 @@ html{
 .big{
     width: 10vw;
     min-width: 100px;
+    touch-action: none;
 }
 
 .blocks > .line > .wrong{
@@ -61,6 +66,6 @@ html{
     cursor: pointer;
 }
 
-
-
-
+.disable-doubletap-to-zoom {
+    touch-action: none;
+}

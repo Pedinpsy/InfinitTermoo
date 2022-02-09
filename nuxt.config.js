@@ -4,6 +4,11 @@ export default {
 
 
   head: {
+    script:[{
+      src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js',
+      'data-ad-client': 'ca-pub-4611061654102600',
+      async: true
+    }],
     router: { base: '/InfinitTermoo/' },
     target: 'static', 
     titleTemplate: '%s - InfinitTermoo',
@@ -20,6 +25,7 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
+
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css

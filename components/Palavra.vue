@@ -119,15 +119,17 @@
     </div>
   </div>
 </template>
-
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4611061654102600"
+     crossorigin="anonymous"></script>
 <script>
 import { Word } from "@andsfonseca/palavras-pt-br";
+
 
 export default {
   name: "Palavra",
   mounted() {
     window.addEventListener("keydown", this.keyPressed);
-    this.selectedWord = Word.getRandomWord(5, true, false, false, false);
+    this.selectedWord = Word.getDailyWord(5, true, false, false, false);
  
   },
 
